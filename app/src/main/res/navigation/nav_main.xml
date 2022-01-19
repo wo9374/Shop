@@ -2,18 +2,22 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_main"
-    app:startDestination="@id/firstHomeScreen">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/firstHomeScreen"
-        android:name="com.example.shop.view.FirstHomeScreen"
-        android:label="FirstHomeScreen" />
+        android:id="@+id/homeFragment"
+        android:name="com.example.shop.view.HomeFragment"
+        android:label="HomeFragment" />
     <fragment
-        android:id="@+id/secondHomeScreen"
-        android:name="com.example.shop.view.SecondHomeScreen"
-        android:label="SecondHomeScreen" />
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.shop.view.FavoriteFragment"
+        android:label="FavoriteFragment" />
     <fragment
-        android:id="@+id/thirdHomeScreen"
-        android:name="com.example.shop.view.ThirdHomeScreen"
-        android:label="ThirdHomeScreen" />
+        android:id="@+id/messageFragment"
+        android:name="com.example.shop.view.MessageFragment"
+        android:label="MessageFragment" />
+    <fragment
+        android:id="@+id/myPageFragment"
+        android:name="com.example.shop.view.MyPageFragment"
+        android:label="MyPageFragment" />
 </navigation>

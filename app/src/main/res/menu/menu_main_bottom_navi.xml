@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@id/firstHomeScreen"
-        android:icon="@drawable/ic_baseline_looks_1_24"
-        android:title="@string/title_menu_first" />
+        android:id="@id/homeFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/string_home" />
 
     <item
-        android:id="@id/secondHomeScreen"
-        android:icon="@drawable/ic_baseline_looks_2_24"
-        android:title="@string/title_menu_second" />
+        android:id="@id/favoriteFragment"
+        android:icon="@drawable/ic_baseline_favorite_24"
+        android:title="@string/string_favorite" />
 
     <item
-        android:id="@id/thirdHomeScreen"
-        android:icon="@drawable/ic_baseline_looks_3_24"
-        android:title="@string/title_menu_third" />
+        android:id="@id/messageFragment"
+        android:icon="@drawable/ic_baseline_message_24"
+        android:title="@string/string_massage" />
+
+    <item
+        android:id="@id/myPageFragment"
+        android:icon="@drawable/ic_baseline_mypage_24"
+        android:title="@string/string_mypage" />
 </menu>

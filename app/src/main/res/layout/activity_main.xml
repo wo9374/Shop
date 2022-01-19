@@ -14,7 +14,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="com.example.shop.view.MainActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/mainNavHost"
@@ -23,14 +24,20 @@
             android:layout_height="0dp"
             app:defaultNavHost="true"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/nav_main" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="H, 1 : 0.17"
             app:menu="@menu/menu_main_bottom_navi" />
+        <!--
+        app:labelVisibilityMode="labeled"
+        BottomNavigation text 설정
+        -->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

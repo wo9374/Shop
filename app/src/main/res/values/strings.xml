@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Shop</string>
 
-    <string name="title_menu_first">1st</string>
-    <string name="title_menu_second">2nd</string>
-    <string name="title_menu_third">3rd</string>
+    <string name="string_home">홈</string>
+    <string name="string_favorite">찜</string>
+    <string name="string_massage">메시지</string>
+    <string name="string_mypage">마이페이지</string>
 </resources>

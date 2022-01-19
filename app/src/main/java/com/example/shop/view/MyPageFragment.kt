@@ -10,11 +10,10 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.shop.R
 
-class FirstHomeScreen : Fragment() {
+class MyPageFragment : Fragment() {
     lateinit var navController : NavController
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.screen_first_home, container, false)
+        val view = inflater.inflate(R.layout.fragment_mypage, container, false)
         return view
     }
 
@@ -22,10 +21,14 @@ class FirstHomeScreen : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(view)
 
+        //val outputArgs : FirstHomeScreenArgs by navArgs()
+        //val stepNumber = outputArgs.stepnum
+
+        //Log.d("프래그먼트", "$stepNumber")
+
         val btn = view.findViewById<Button>(R.id.first_btn)
         btn.setOnClickListener {
-            //val action = FirstHomeScreenDirections.actionFirstHomeScreenToSecondHomeScreen()
-            //navController.navigate(action)
+           // navController.navigate(R.id.action_secondHomeScreen_to_thirdHomeScreen)
         }
     }
 }
