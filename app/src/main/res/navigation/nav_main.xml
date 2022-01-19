@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/firstHomeScreen">
+
+    <fragment
+        android:id="@+id/firstHomeScreen"
+        android:name="com.example.shop.view.FirstHomeScreen"
+        android:label="FirstHomeScreen" />
+    <fragment
+        android:id="@+id/secondHomeScreen"
+        android:name="com.example.shop.view.SecondHomeScreen"
+        android:label="SecondHomeScreen" />
+    <fragment
+        android:id="@+id/thirdHomeScreen"
+        android:name="com.example.shop.view.ThirdHomeScreen"
+        android:label="ThirdHomeScreen" />
+</navigation>
