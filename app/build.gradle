@@ -12,8 +12,11 @@ android {
 
     defaultConfig {
         applicationId "com.example.shop"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 32
+
+        multiDexEnabled
+
         versionCode 1
         versionName "1.0"
 
@@ -36,6 +39,11 @@ android {
 
     buildFeatures{
         dataBinding = true
+    }
+
+    //MPAndroidChart 사용으로 인한 추가
+    repositories {
+        maven { url 'https://jitpack.io' }
     }
 }
 
@@ -76,4 +84,8 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.7.2'
     implementation 'com.squareup.retrofit2:converter-gson:2.7.2'
+
+    //코틀린 원형그래프, 파이 그래프
+    //https://github.com/PhilJay/MPAndroidChart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

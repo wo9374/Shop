@@ -5,30 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.shop.R
+import com.example.shop.databinding.FragmentMypageBinding
 
 class MyPageFragment : Fragment() {
+    lateinit var binding: FragmentMypageBinding
     lateinit var navController : NavController
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_mypage, container, false)
-        return view
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_mypage,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navController = Navigation.findNavController(view)
+        navController = Navigation.findNavController(binding.root)
 
-        //val outputArgs : FirstHomeScreenArgs by navArgs()
-        //val stepNumber = outputArgs.stepnum
-
-        //Log.d("프래그먼트", "$stepNumber")
-
-        val btn = view.findViewById<Button>(R.id.first_btn)
-        btn.setOnClickListener {
-           // navController.navigate(R.id.action_secondHomeScreen_to_thirdHomeScreen)
-        }
     }
 }
