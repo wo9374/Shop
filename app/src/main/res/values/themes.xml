@@ -14,15 +14,15 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="Theme.Shop.Splash" parent="Theme.SplashScreen">
+    <!--<style name="Theme.Shop.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
-        <!-- 스플래시의 배경-->
+        &lt;!&ndash; 스플래시의 배경&ndash;&gt;
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo_shop</item>
-        <!-- 스플래시에 보일 아이콘-->
+        &lt;!&ndash; 스플래시에 보일 아이콘&ndash;&gt;
         <item name="postSplashScreenTheme">@style/Theme.Shop</item>
-        <!-- 스플래시가 끝난 후 보일 화면의 테마-->
+        &lt;!&ndash; 스플래시가 끝난 후 보일 화면의 테마&ndash;&gt;
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-    </style>
+    </style>-->
 </resources>

@@ -89,6 +89,4 @@ dependencies {
     //https://github.com/PhilJay/MPAndroidChart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    //Android 12 SplashAPI Compat 버전
-    implementation("androidx.core:core-splashscreen:1.0.0-beta01")
 }
