@@ -15,9 +15,21 @@
     <fragment
         android:id="@+id/messageFragment"
         android:name="com.example.shop.view.MessageFragment"
-        android:label="MessageFragment" />
+        android:label="MessageFragment">
+
+        <action
+            android:id="@+id/action_messageFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.shop.view.AddFragment"
+        android:label="AddFragment" />
+
     <fragment
         android:id="@+id/myPageFragment"
         android:name="com.example.shop.view.MyPageFragment"
         android:label="MyPageFragment" />
+
 </navigation>

@@ -1,32 +1,42 @@
 package com.example.shop.view
 
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shop.R
+import com.example.shop.adapter.TestAdapter
 import com.example.shop.databinding.FragmentMessageBinding
-import com.github.mikephil.charting.animation.Easing
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.highlight.Highlight
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener
-import com.github.mikephil.charting.utils.ColorTemplate
+import com.example.shop.viewmodel.MainViewModel
 
 class MessageFragment : Fragment() {
-    lateinit var binding : FragmentMessageBinding
-    lateinit var navController : NavController
+    lateinit var binding: FragmentMessageBinding
+    lateinit var navController: NavController
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_message,container,false)
+    //activity 의 ViewModel 을 따름
+    private val viewModel: MainViewModel by activityViewModels()
+
+    var floatingFlag = false
+    lateinit var fabOpen : Animation
+    lateinit var fabClose : Animation
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false)
+
+        activity?.let {
+            binding.viewModel = viewModel
+            binding.lifecycleOwner = this
+        }
+
         return binding.root
     }
 
@@ -34,52 +44,60 @@ class MessageFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         navController = Navigation.findNavController(binding.root)
 
-        //퍼센트로 계산
-        binding.chart.setUsePercentValues(true)
+        initComponent()
 
-        //data Set
-        val entries = ArrayList<PieEntry>()
-        entries.add(PieEntry(508f, "Apple"))
-        entries.add(PieEntry(600f, "Orange"))
-        entries.add(PieEntry(750f, "Mango"))
-        entries.add(PieEntry(508f, "RedOrange"))
-        entries.add(PieEntry(670f, "Other"))
+        setRecyclerInit()
 
-        //add a lot of colors
-        val colorsItems = ArrayList<Int>()
-        for (c in ColorTemplate.VORDIPLOM_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.JOYFUL_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.COLORFUL_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.LIBERTY_COLORS) colorsItems.add(c)
-        for (c in ColorTemplate.PASTEL_COLORS) colorsItems.add(c)
-        colorsItems.add(ColorTemplate.getHoloBlue())
-        //해당 그래프의 아이템별 범위의 색을 set 해주는데 일단 List 값에 담아서 셋팅
+        binding.callBack = callBack
+    }
 
-        val pieDataSet = PieDataSet(entries, "")
-        pieDataSet.apply {
-            colors = colorsItems
-            valueTextColor = Color.BLACK
-            valueTextSize = 16f
+    private fun setRecyclerInit() {
+        val testAdapter = TestAdapter(viewModel)
+
+        binding.recyclerHome.apply {
+            adapter = testAdapter
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            //item 이 추가되거나 삭제될 때 RecyclerView 의 크기가 변경될 수도 있고, 그렇게 되면 계층 구조의 다른 View 크기가 변경될 가능성이 있기 때문
         }
-        //PieDataSet 변수를 만들어 위에서 셋팅한 색상과 그래프에 들어갈 퍼센티이지 수치 색상과 사이즈 지정 가능
 
-        val pieData = PieData(pieDataSet)
-        binding.chart.apply {
-            data = pieData
-            description.isEnabled = true   //설명
-            description.text = "파이그래프"
-            isRotationEnabled = true       //드래그시 회전
-            centerText = "파이그래프 Center"   //중앙 text
-            setEntryLabelColor(Color.BLACK)
-            animateY(1500, Easing.EaseInOutQuad)
-            animate()
+        viewModel.getAll().observe(viewLifecycleOwner, Observer { test ->
+            test?.let { testAdapter.setTest(test) }
+        })
+    }
 
-            setOnChartValueSelectedListener(object : OnChartValueSelectedListener {
-                override fun onValueSelected(e: Entry?, h: Highlight?) {
-                    Log.d("HomeFragment", "${e?.data}")
+    private fun initComponent() {
+        fabOpen = AnimationUtils.loadAnimation(context, R.anim.fab_open)
+        fabClose = AnimationUtils.loadAnimation(context, R.anim.fab_close)
+    }
+
+    interface CallBack {
+        fun onClick(view: View)
+    }
+    private val callBack = object : CallBack {
+        override fun onClick(view: View) {
+            when (view.id) {
+                binding.fabMain.id,
+                binding.fab1.id,
+                binding.fab2.id,
+                binding.fab3.id-> {
+                    binding.apply {
+                        if (!floatingFlag){
+                            fabLayout1.startAnimation(fabOpen)
+                            fabLayout2.startAnimation(fabOpen)
+                            fabLayout3.startAnimation(fabOpen)
+                        }else{
+                            fabLayout1.startAnimation(fabClose)
+                            fabLayout2.startAnimation(fabClose)
+                            fabLayout3.startAnimation(fabClose)
+                        }
+                    }
+                    floatingFlag = floatingFlag.not()
+
+                    navController.navigate(R.id.action_messageFragment_to_addFragment)
                 }
-                override fun onNothingSelected() {}
-            })
+            }
         }
     }
+
 }

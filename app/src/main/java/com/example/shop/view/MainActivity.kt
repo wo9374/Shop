@@ -7,11 +7,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.example.shop.R
+import com.example.shop.adapter.TestAdapter
 import com.example.shop.databinding.ActivityMainBinding
 import com.example.shop.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
-
     lateinit var binding: ActivityMainBinding
 
     private val viewModel: MainViewModel by viewModels()
@@ -25,6 +25,12 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+        setNavigationInit()
+    }
+
+
+
+    private fun setNavigationInit(){
         val navHostFragment = supportFragmentManager.findFragmentById(binding.mainNavHost.id) as NavHostFragment
         val navController = navHostFragment.navController
 
