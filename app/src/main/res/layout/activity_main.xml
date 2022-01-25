@@ -32,12 +32,16 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:labelVisibilityMode="labeled"
+            app:itemRippleColor="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="H, 1 : 0.17"
             app:menu="@menu/menu_main_bottom_navi" />
         <!--
         app:labelVisibilityMode="labeled"
-        BottomNavigation text 설정
+        BottomNavigation normal 에도 text 설정
+
+        app:itemRippleColor="@null"
+        Item 선택시 background anim 제거
         -->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

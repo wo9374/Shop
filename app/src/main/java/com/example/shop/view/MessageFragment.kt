@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.shop.R
 import com.example.shop.adapter.TestAdapter
 import com.example.shop.databinding.FragmentMessageBinding
@@ -29,7 +30,10 @@ class MessageFragment : Fragment() {
     lateinit var fabOpen : Animation
     lateinit var fabClose : Animation
 
+    lateinit var msgLayoutManager : LinearLayoutManager
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_message, container, false)
 
         activity?.let {
@@ -52,23 +56,32 @@ class MessageFragment : Fragment() {
     }
 
     private fun setRecyclerInit() {
-        val testAdapter = TestAdapter(viewModel)
-
-        binding.recyclerHome.apply {
-            adapter = testAdapter
-            layoutManager = LinearLayoutManager(context)
-            setHasFixedSize(true)
-            //item 이 추가되거나 삭제될 때 RecyclerView 의 크기가 변경될 수도 있고, 그렇게 되면 계층 구조의 다른 View 크기가 변경될 가능성이 있기 때문
-        }
+        val testAdapter = TestAdapter()
 
         viewModel.getAll().observe(viewLifecycleOwner, Observer { test ->
             test?.let { testAdapter.setTest(test) }
         })
+
+        //notifyDataSet 깜빡임 방지
+        val animator = binding.recyclerMessage.itemAnimator
+        if (animator is SimpleItemAnimator){
+            animator.supportsChangeAnimations = false
+        }
+
+        binding.recyclerMessage.apply {
+            adapter = testAdapter
+            layoutManager = msgLayoutManager
+            itemAnimator = animator
+            setHasFixedSize(true)
+            //item 이 추가되거나 삭제될 때 RecyclerView 의 크기가 변경될 수도 있고, 그렇게 되면 계층 구조의 다른 View 크기가 변경될 가능성이 있기 때문
+        }
     }
 
     private fun initComponent() {
         fabOpen = AnimationUtils.loadAnimation(context, R.anim.fab_open)
         fabClose = AnimationUtils.loadAnimation(context, R.anim.fab_close)
+
+        msgLayoutManager = LinearLayoutManager(context)
     }
 
     interface CallBack {

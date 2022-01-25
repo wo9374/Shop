@@ -18,7 +18,8 @@ abstract class TestDatabase : RoomDatabase() {
         fun getInstance(context:Context): TestDatabase? {
             if (Instance == null) {
                 synchronized(TestDatabase::class) { //synchronized: 여러 스레드가 동시에 접근 불가. 동기적으로 접근
-                    Instance = Room.databaseBuilder(context.applicationContext,
+                    Instance = Room.databaseBuilder(
+                        context.applicationContext,
                         TestDatabase::class.java, "test")
                         .fallbackToDestructiveMigration()
                         .build()

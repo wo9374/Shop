@@ -4,7 +4,7 @@ import androidx.room.*
 
 @Entity
 data class Test(
-    //autoGenerate는 null을 받으면 ID 값을 자동으로 할당
+    //autoGenerate null을 받으면 ID 값을 자동으로 할당
     @PrimaryKey(autoGenerate = true)
     var id : Int?,
 

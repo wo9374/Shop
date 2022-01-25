@@ -20,7 +20,7 @@
         tools:context="com.example.shop.view.MessageFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_home"
+            android:id="@+id/recycler_message"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_test" />

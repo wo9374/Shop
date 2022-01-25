@@ -8,7 +8,7 @@ import com.example.shop.databinding.ItemTestBinding
 import com.example.shop.model.Test
 import com.example.shop.viewmodel.MainViewModel
 
-class TestAdapter(viewModel : MainViewModel) : RecyclerView.Adapter<TestViewHolder>() {
+class TestAdapter : RecyclerView.Adapter<TestViewHolder>() {
     private var test = emptyList<Test>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {

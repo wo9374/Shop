@@ -13,7 +13,6 @@ class TestRepository(application: Application) {
     fun getAll(): LiveData<List<Test>> {
         return tests
     }
-
     fun insert(todo: Test){
         testDao.insert(todo)
     }
