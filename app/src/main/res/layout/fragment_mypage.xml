@@ -13,19 +13,15 @@
             android:layout_height="wrap_content"
             android:text="MyPageFragment"
             android:textSize="20sp"
-            app:layout_constraintBottom_toTopOf="@+id/first_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <Button
-            android:id="@+id/first_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="마이페이지"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.github.mikephil.charting.charts.CandleStickChart
+            android:id="@+id/priceChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
 

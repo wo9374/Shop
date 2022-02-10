@@ -2,11 +2,9 @@ package com.example.shop.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shop.databinding.ItemTestBinding
 import com.example.shop.model.Test
-import com.example.shop.viewmodel.MainViewModel
 
 class TestAdapter : RecyclerView.Adapter<TestViewHolder>() {
     private var test = emptyList<Test>()
