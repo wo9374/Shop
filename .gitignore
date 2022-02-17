@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+.idea
+.gitattributes
+gradlew.bat
+gradlew
